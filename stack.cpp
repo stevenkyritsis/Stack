@@ -3,29 +3,59 @@
 //
 //
 
-#include<iostream>
+#include <iostream>
 using namespace std;
+const int SIZE = 8;
 
-void creat_stack(Stack&)
-int empty(Stack&)
-void push(Stack&, const inforec&)
-void pop(Stack&, inforec&)
-int top_item(const Stack&)
-void purge(Stack&)
+struct inforec {
+		int number;
+	};
+
+struct Stack {
+	inforec i[SIZE];
+	int top;
+	};
+
+void creat_stack(Stack &s)
+{
+	s.top = -1;
+}
+
+int empty(Stack &s)
+{
+	return (s.top == -1);
+}
+
+void push(Stack &s, const inforec &i)
+{
+	++s.top;
+	s.i[s.top] = i;
+}
+
+void pop(Stack &s, inforec &item)
+{
+	item = s.i[s.top--];
+}
+
+int top_item(const Stack &s)
+{
+	return (s.top);
+}
+
+void purge(Stack &s, inforec &i)
+{
+	while (s != empty(s))
+	{
+		pop(s, i);
+	}
+}
+
+
 
 int main()
 {
 
-	const int SIZE = 8;
-
-	struct inforec {
-		int number;
-	};
-
-	struct Stack {
-		inforec i[SIZE];
-		int top;
-	};
+	
 
 	Stack s;
 	inforec i;
@@ -64,7 +94,7 @@ int main()
 		break;
 	}
 	case 6: {
-		purge(s);
+		purge(s, i);
 		break;
 	}
 	default: {
@@ -76,36 +106,3 @@ int main()
 	return 0;
 }
 
-void creat_stack(Stack &s)
-{
-	s.top = NULL;
-}
-
-int empty(Stack &s)
-{
-	return (s.top == -1);
-}
-
-void push(Stack &s, const inforec &i)
-{
-	++s.top;
-	s.i[s.top] = i;
-}
-
-void pop(Stack &s, inforec &item)
-{
-	item = s.i[s.top--];
-}
-
-int top_item(const Stack &s)
-{
-	return (s.top);
-}
-
-void purge(Stack &s)
-{
-	for (int i = 0; i < SIZE; i++)
-	{
-		pop(s);
-	}
-}
