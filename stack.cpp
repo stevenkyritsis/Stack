@@ -26,7 +26,7 @@ int empty(Stack &s)
 	return (s.top == -1);
 }
 
-void push(Stack &s, const inforec &i)
+void push(Stack &s, inforec &i)
 {
 	++s.top;
 	s.i[s.top] = i;
@@ -44,7 +44,7 @@ int top_item(const Stack &s)
 
 void purge(Stack &s, inforec &i)
 {
-	while (s != empty(s))
+	for(int count = 0; count < SIZE; count++)
 	{
 		pop(s, i);
 	}
@@ -58,17 +58,18 @@ int main()
 	
 
 	Stack s;
-	inforec i;
+	inforec c;
 
 
-	int input;
-	
+	int input = 0;
+do{	
 	cout << "1. Create Stack\n";
 	cout << "2. Push onto Stack\n";
 	cout << "3. Pop off Stack\n";
 	cout << "4. Display top of Stack\n";
 	cout << "5. Check if Stack empty\n";
 	cout << "6. Purge Stack\n";
+	cout << "7. EXIT\n";
 	cin >> input;
 
 	switch (input)
@@ -78,30 +79,39 @@ int main()
 		break;
 	}
 	case 2: {
-		push(s, i);
+		cout << "What would you like to push onto the stack? (integers only)\n";
+		cin >> c.number;
+		push(s, c);
 		break;
 	}
 	case 3: {
-		pop(s, i);
+		pop(s, c);
 		break;
 	}
 	case 4: {
-		top_item(s);
+		cout << top_item(s);
 		break;
 	}
 	case 5: {
-		empty(s);
+		if(s.top == empty(s))
+		cout << "Stack is empty.\n";
+		else
+		cout << "Stack is not empty.\n";
 		break;
 	}
 	case 6: {
-		purge(s, i);
+		purge(s, c);
+		break;
+	}
+	case 7:{
+		return 0;
 		break;
 	}
 	default: {
 		cout << "Please enter a number listed on the menu.\n";
 	}
 	}
-	
+}while (input != 7);
 
 	return 0;
 }
