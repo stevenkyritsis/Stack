@@ -50,8 +50,6 @@ void purge(Stack &s, inforec &i)
 	}
 }
 
-
-
 int main()
 {
 
@@ -89,7 +87,7 @@ do{
 		break;
 	}
 	case 4: {
-		cout << top_item(s);
+		cout << top_item(s) << endl;
 		break;
 	}
 	case 5: {
@@ -115,4 +113,3 @@ do{
 
 	return 0;
 }
-
