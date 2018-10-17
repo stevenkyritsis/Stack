@@ -37,9 +37,10 @@ void pop(Stack &s, inforec &item)
 	item = s.i[s.top--];
 }
 
-int top_item(const Stack &s)
+int top_item(const Stack &s, inforec &item)
 {
-	return (s.top);
+	item = s.i[s.top];
+	return (item);
 }
 
 void purge(Stack &s, inforec &i)
@@ -87,7 +88,7 @@ do{
 		break;
 	}
 	case 4: {
-		cout << top_item(s) << endl;
+		cout << top_item(s, c) << endl;
 		break;
 	}
 	case 5: {
