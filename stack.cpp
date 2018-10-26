@@ -11,52 +11,50 @@ struct inforec {
 		int number;
 	};
 
-struct Stack {
+struct stack {
 	inforec i[SIZE];
 	int top;
 	};
 
-void creat_stack(Stack &s)
+
+void creat_stack(stack &s)
 {
 	s.top = -1;
 }
 
-int empty(Stack &s)
+int empty(const stack &s)
 {
 	return (s.top == -1);
 }
 
-void push(Stack &s, inforec &i)
+void push(stack &s, inforec &i)
 {
 	++s.top;
 	s.i[s.top] = i;
 }
 
-void pop(Stack &s, inforec &item)
+void pop(stack &s, inforec &item)
 {
 	item = s.i[s.top--];
 }
 
-int top_item(const Stack &s, inforec &item)
+int top_item(stack &s)
 {
-	item = s.i[s.top];
-	return (item);
+	return s.top;
 }
 
-void purge(Stack &s, inforec &i)
+void purge(stack &s, inforec &i)
 {
-	for(int count = 0; count < SIZE; count++)
-	{
-		pop(s, i);
-	}
+		for (int count = 0; count < SIZE; count++)
+		{
+			pop(s, i);
+		}
 }
 
 int main()
 {
 
-	
-
-	Stack s;
+	stack s;
 	inforec c;
 
 
@@ -88,11 +86,12 @@ do{
 		break;
 	}
 	case 4: {
-		cout << top_item(s, c) << endl;
+		cout << top_item(s) << endl;
+		cout << endl;
 		break;
 	}
 	case 5: {
-		if(s.top == empty(s))
+		if(s.top <= empty(s))
 		cout << "Stack is empty.\n";
 		else
 		cout << "Stack is not empty.\n";
