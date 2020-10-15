@@ -5,44 +5,54 @@
 
 #include <iostream>
 using namespace std;
+
+//setting constant size integer for stack
 const int SIZE = 8;
 
+//structure for recording numbers
 struct inforec {
 		int number;
 	};
 
+//structure for stack
 struct stack {
 	inforec i[SIZE];
 	int top;
 	};
 
 
+//function for initializing stack
 void creat_stack(stack &s)
 {
 	s.top = -1;
 }
 
+//function checking if the stack is empty
 int empty(const stack &s)
 {
 	return (s.top == -1);
 }
 
+//function pushing an integer to the stack
 void push(stack &s, inforec &i)
 {
 	++s.top;
 	s.i[s.top] = i;
 }
 
+//function removing integer from stack
 void pop(stack &s, inforec &item)
 {
 	item = s.i[s.top--];
 }
 
+//function returning the integer at the top of the stack
 int top_item(stack &s)
 {
 	return s.top;
 }
 
+//function purging the stack
 void purge(stack &s, inforec &i)
 {
 		for (int count = 0; count < SIZE; count++)
@@ -59,6 +69,8 @@ int main()
 
 
 	int input = 0;
+
+//menu
 do{	
 	cout << "1. Create Stack\n";
 	cout << "2. Push onto Stack\n";
